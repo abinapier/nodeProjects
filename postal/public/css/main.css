@@ -39,5 +39,9 @@ input[type="submit"]{
 span{
   font-size: 150%;
   font-weight: bold;
-  
+
+}
+
+a, a:visited{
+  color: #0e77b0;
 }
