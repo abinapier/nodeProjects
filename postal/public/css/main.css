@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Raleway&display=swap');
+h1{
+  font-family: 'Abril Fatface', serif;
+}
+
+body{
+  font-family: 'Raleway', sans-serif;
+  padding: 10px;
+}
+
+input, select{
+  font-family: 'Raleway', sans-serif;
+  padding: 10px 5px;
+  font-size: 100%;
+  width: 250px;
+  border: solid 1px black;
+  box-sizing: border-box;
+}
+
+label, input, select{
+  display: block;
+}
+select{
+  margin: 0;
+}
+
+label{
+  margin-top: 10px;
+}
+
+input[type="submit"]{
+  border: none;
+  background-color: black;
+  border-radius: 30px;
+  color: white;
+  margin: 10px 0;
+}
+
+span{
+  font-size: 150%;
+  font-weight: bold;
+  
+}
