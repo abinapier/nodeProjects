@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 
 // set up a rule that says requests to "/math" should be handled by the
 // handleMath function below
-app.get('/math', handleMath);
+app.get('/rate', handleRate);
 
 // start the server listening
 app.listen(port, function() {
@@ -25,39 +25,116 @@ app.listen(port, function() {
  * they are listed here.
  **********************************************************************/
 
-function handleMath(request, response) {
-	const operation = request.query.operation;
-	const operand1 = Number(request.query.operand1);
-	const operand2 = Number(request.query.operand2);
+function handleRate(request, response) {
+	const type = request.query.type;
+	const weight = Number(request.query.weight);
+	
 
 	// TODO: Here we should check to make sure we have all the correct parameters
 
-	computeOperation(response, operation, operand1, operand2);
+	computeOperation(response, type, weight);
 }
 
-function computeOperation(response, op, left, right) {
-	op = op.toLowerCase();
+function computeRate(response, type, weight) {
 
-	let result = 0;
+	let rate = 0;
 
-	if (op == "add") {
-		result = left + right;
-	} else if (op == "subtract") {
-		result = left - right;		
-	} else if (op == "multiply") {
-		result = left * right;
-	} else if (op == "divide") {
-		result = left / right;
-	} else {
-		// It would be best here to redirect to an "unknown operation"
-		// error page or something similar.
+	if(type=='stamp' || type=='meter'){
+		if(weight>3.5){
+			type = 'flat';
+		}
 	}
 
+	switch (type){
+		case 'stamp':
+			if(weight<=1){
+				rate = .55;
+			}else if(weight<=2){
+				rate = .7;
+			}else if(weight<=3){
+				rate = .85;
+			}else if(weight<=3.5){
+				rate = 1;
+			}
+			break;
+		case 'meter':
+			if(weight<=1){
+				rate = .50;
+			}else if(weight<=2){
+				rate = .65;
+			}else if(weight<=3){
+				rate = .80;
+			}else if(weight<=3.5){
+				rate = .95;
+			}
+			break;
+		case 'flat':
+			if(weight<=1){
+				rate = 1;
+			}else if(weight<=2){
+				rate = 1.2;
+			}else if(weight<=3){
+				rate = 1.4;
+			}else if(weight<=4){
+				rate = 1.6;
+			}else if(weight<=5){
+				rate = 1.8;
+			}else if(weight<=6){
+				rate = 2;
+			}else if(weight<=7){
+				rate = 2.2;
+			}else if(weight<=8){
+				rate = 2.4;
+			}else if(weight<=9){
+				rate = 2.6;
+			}else if(weight<=10){
+				rate = 2.8;
+			}else if(weight<=11){
+				rate = 3;
+			}else if(weight<=12){
+				rate = 3.2;
+			}else if(weight<=13){
+				rate = 3.4;
+			}
+			break;
+		case 'package':
+			if(weight<=1){
+				rate = 3.8;
+			}else if(weight<=2){
+				rate = 3.8;
+			}else if(weight<=3){
+				rate = 3.8;
+			}else if(weight<=4){
+				rate = 3.8;
+			}else if(weight<=5){
+				rate = 4.6;
+			}else if(weight<=6){
+				rate = 4.6;
+			}else if(weight<=7){
+				rate = 4.6;
+			}else if(weight<=8){
+				rate = 4.6;
+			}else if(weight<=9){
+				rate = 5.3;
+			}else if(weight<=10){
+				rate = 5.3;
+			}else if(weight<=11){
+				rate = 5.3;
+			}else if(weight<=12){
+				rate = 5.3;
+			}else if(weight<=13){
+				rate = 5.9;
+			}
+			break;
+	}
+	
+
+
 	// Set up a JSON object of the values we want to pass along to the EJS result page
-	const params = {operation: op, left: left, right: right, result: result};
+	const params = {parcelType: type, parcelWeight: weight, parcelRate: rate};
 
 	// Render the response, using the EJS page "result.ejs" in the pages directory
 	// Makes sure to pass it the parameters we need.
-	response.render('pages/result', params);
+	response.render('pages/rate', params);
 
 }
