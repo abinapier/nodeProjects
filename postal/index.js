@@ -32,7 +32,7 @@ function handleRate(request, response) {
 
 	// TODO: Here we should check to make sure we have all the correct parameters
 
-	computeOperation(response, type, weight);
+	computeRate(response, type, weight);
 }
 
 function computeRate(response, type, weight) {
