@@ -31,9 +31,10 @@ label{
 input[type="submit"]{
   border: none;
   background-color: black;
-  border-radius: 30px;
+  
   color: white;
   margin: 10px 0;
+  cursor: pointer;
 }
 
 span{
@@ -43,5 +44,22 @@ span{
 }
 
 a, a:visited{
-  color: #0e77b0;
+  color: #0b2522;
+  font-style: italic;
+}
+
+main{
+  width: 300px;
+  margin: auto;
+  position: relative;
+}
+main::before{
+  content:"";
+  background-color: #9ef8ec;
+  width: 250px;
+  position: absolute;
+  height: 100%;
+  left: 15px;
+  top: 25px;
+  z-index: -1;
 }

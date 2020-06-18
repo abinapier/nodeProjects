@@ -6,12 +6,13 @@
 </head>
 
 <body>
-
+<main>
   <h1>Your Rate</h1>
   <p>Type: <%= parcelType %></p>
   <p>Weight: <%= parcelWeight %> oz</p>
   <p>Rate: <span>$<%= (Math.round(parcelRate * 100) / 100).toFixed(2) %></span></p>
 
   <a href="/">Calculate Another Rate</a>
+</main>
 </body>
 </html>
