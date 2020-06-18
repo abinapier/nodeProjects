@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+
+<body>
+
+  <% include ../partials/nav.ejs %>
+
+  <form action="/math" method="get">
+    <input type="number" name="num-one">
+    <select name="operator">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+    <input type="number" name="num-two">
+    <input type="button" value="Get JSON Answer" onclick="getJSON()">
+    <input type="submit" value="Get Answer">
+  </form>
+
+</body>
+</html>
