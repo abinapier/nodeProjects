@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rate</title>
+  <title>Your Rate</title>
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 
 <body>
@@ -9,7 +10,7 @@
   <h1>Your Rate</h1>
   <p>Type: <%= parcelType %></p>
   <p>Weight: <%= parcelWeight %> oz</p>
-  <p>Rate: $<%= (Math.round(parcelRate * 100) / 100).toFixed(2) %></p>
+  <p>Rate: <span>$<%= (Math.round(parcelRate * 100) / 100).toFixed(2) %></span></p>
 
 </body>
 </html>
